@@ -85,7 +85,7 @@ module Azure
             cloud_service_xml, 'DefaultWinRMCertificateThumbprint'
           )
           deployment_xml = cloud_services_xml.css('Deployments Deployment')
-          cloud.deployment_name = xml_content(deployment_xml, 'Name')
+          cloud.deployment_name = xml_content(deployment_xml, 'Name') unless deployment_xml.empty?
           vms_in_deployment = {}
 
           cloud_service_xml.css('Deployments').each do |deployxml|
